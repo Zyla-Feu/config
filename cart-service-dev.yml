@@ -1,0 +1,30 @@
+server:
+  port: 14400
+
+eureka:
+  instance:
+    instance-id: "${spring.cloud.client.ip-address}:${server.port}"
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+  client:
+    service-url:
+      defaultZone: "http://localhost:18000/eureka/,http://localhost:18001/eureka/,http://localhost:18002/eureka/"
+
+resilience4j:
+  retry:
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration: 1000ms
+        enable-exponential-backoff: true
+        exponential-backoff-multiplier: 0.5
+    instances:
+      retry1:
+        base-config: default
+      retry2:
+        base-config: default
+        max-attempts: 3
+        wait-duration: 500ms
+
+demo:
+  message: message before bus refresh
