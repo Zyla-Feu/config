@@ -11,4 +11,4 @@ eureka:
       defaultZone: "http://localhost:18000/eureka/,http://localhost:18001/eureka/,http://localhost:18002/eureka/"
 
 demo:
-  message: message before bus refresh
+  message: message changed after bus refresh
