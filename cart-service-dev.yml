@@ -27,4 +27,4 @@ resilience4j:
         wait-duration: 500ms
 
 demo:
-  message: message before bus refresh
+  message: message changed after bus refresh
